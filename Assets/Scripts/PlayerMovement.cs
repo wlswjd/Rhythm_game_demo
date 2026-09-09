@@ -1,9 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 11f;
+
+    private Rigidbody2D rb;
+    private Vector2 input;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void Update()
     {
@@ -18,12 +27,15 @@ public class PlayerMovement : MonoBehaviour
         if (keyboard.downArrowKey.isPressed)  y -= 1f;
         if (keyboard.upArrowKey.isPressed)    y += 1f;
 
-        Vector2 input = new Vector2(x, y);
+        input = new Vector2(x, y);
         if (input.sqrMagnitude > 1f)
         {
             input = input.normalized;
         }
+    }
 
-        transform.position += (Vector3)(input * moveSpeed * Time.deltaTime);
+    private void FixedUpdate()
+    {
+        rb.linearVelocity = input * moveSpeed;
     }
 }
