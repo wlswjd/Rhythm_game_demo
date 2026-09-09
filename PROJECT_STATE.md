@@ -126,28 +126,20 @@ D를 E보다 먼저 두는 이유: 에셋이 없어도 기본 사각형으로 �
 
 ## 6. 현재 상태
 
-- Unity 6.3 LTS(6000.3.23f1) 설치 완료. 모듈: Mac Build Support(IL2CPP),
-  Windows Build Support(Mono). 한국어 언어팩 미설치(영어 UI 유지).
-- Universal 2D(URP) 템플릿으로 프로젝트 생성 완료.
-  경로: /Users/relaxman/Documents/Project/Rhythm_game_demo
-- Git 연결 완료. .gitignore 적용 후 초기 커밋 및 push 완료.
-  원격: https://github.com/wlswjd/Rhythm_game_demo (기본 브랜치 main)
-- Unity AI 관련 패키지 제거. 미사용인데 NoSubscription 에러를 반복 출력해
-  Console을 오염시켰다.
-- 편집기 환경 구축 완료.
-  - 편집기: Cursor
-  - 연동: 비공식 패키지 `com.unity.ide.cursor` (git URL 설치)
-  - .NET SDK 10.0.400 설치
-  - Cursor C# 확장(Anysphere) 설치
-  - `Reuse existing Cursor window` 체크. 자동완성 동작 확인 완료
-- 아직 게임 코드는 한 줄도 없음. SampleScene에 Main Camera와 Global Light 2D만 존재.
+- 블록 A~D 완료. Player 이동(Rigidbody2D), 벽 충돌, Cinemachine 추적,
+  Tilemap 2층(Ground/Collision) + Composite Collider 동작 확인.
+- 시점: 3/4 탑다운 + 직교 격자 유지. 아이소메트릭 재검토 완료(9절 참조).
+- 타일셋 구매 완료: The Fan-tasy Tileset (Premium) 1.5.8, 16x16.
+  Unity 임포트는 미착수.
+- DEVLOG.md 작성 시작.
 
 ### 다음 작업
 
-**블록 A — 스프라이트 하나를 방향키로 움직이기 (60분)**
-1. 흰 사각형 스프라이트를 씬에 배치
-2. 방향키 입력을 받아 위치를 바꾸는 스크립트 작성
-3. Play 버튼으로 동작 확인
+**블록 F — 타일셋 임포트 및 적용**
+1. Art 폴더에서 필요한 시트만 Assets/Sprites/Tileset에 복사
+2. PPU 16, Filter Mode Point, Compression None 설정
+3. Sprite Editor로 16x16 그리드 슬라이싱
+4. 기존 타일 애셋의 Sprite 교체 → 플레이스맵이 한 번에 갈아입혀지는지 확인
 
 ---
 
@@ -173,6 +165,8 @@ D를 E보다 먼저 두는 이유: 에셋이 없어도 기본 사각형으로 �
 
 - 2026-09-08: 첫 구현 직전, GPT 원샷 게임 생성과 아이소메트릭 아트로
   두 번 화제가 이동했다. 둘 다 판단이 필요한 작업 앞에서 나왔다.
+- 2026-09-09: 에셋 조달 중 UI 킷으로 화제가 이동. 기본 팩 확인이라는
+  판단 작업 앞에서 발생. 9절에 기록만 하고 복귀.
 
 ---
 
@@ -208,6 +202,12 @@ D를 E보다 먼저 두는 이유: 에셋이 없어도 기본 사각형으로 �
 - 되돌리기 비용: 블록 D까지는 낮다(플레이스홀더 맵 재작업 1~2시간).
   블록 E 이후에는 확보한 에셋 전체가 무용지물이 되어 급격히 커진다.
   따라서 블록 D 직후가 이 결정의 마감이다.
+
+### UI 에셋 후보 (블록 G 착수 시 검토)
+- Pixel HUD UI Free Kit (Unity Asset Store)
+  https://assetstore.unity.com/packages/2d/gui/pixel-hud-ui-free-kit-378572
+- 주의: 블록 G의 실제 병목은 UI 그래픽이 아니라 한글 지원 픽셀 폰트와
+  TextMeshPro 폰트 애셋 생성이다. 그것부터 확보할 것.
 
 ### Claude Code 도입 (블록 B 완료 후 검토)
 
