@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa4c6043399c4d318c0cdfa34276623, type: 3}
+  m_Name: Dialogue_BossWarning
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  speakerName: "\uBCF4\uC2A4\uACBD\uACE0\uBB38"
+  lines:
+  - "\uC0C8\uB85C\uC6B4 \uC9C0\uC5ED\uC73C\uB85C \uC774\uB3D9\uD560\uAE4C\uC694?"
