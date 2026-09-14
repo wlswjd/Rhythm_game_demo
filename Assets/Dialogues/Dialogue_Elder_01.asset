@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa4c6043399c4d318c0cdfa34276623, type: 3}
+  m_Name: Dialogue_Elder_01
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  speakerName: "\uAC70\uB9AC\uB178\uC7781"
+  lines:
+  - "\uB0B4\uAC00 \uC655\uB144\uC5D4 \uCF69\uCFE0\uB974 \uC6B0\uC2B9\uB3C4 \uBC25\uBA39\uB4EF\uC774
+    \uD588\uC9C0.."
+  - "\uC694\uC998 \uC74C\uC545\uD558\uB294 \uC560\uB4E4\uC740 \uBE60\uB974\uACE0
+    \uD654\uB824\uD568\uB9CC \uCD94\uAD6C\uD558\uB294\uAC83 \uAC19\uAD70..."
