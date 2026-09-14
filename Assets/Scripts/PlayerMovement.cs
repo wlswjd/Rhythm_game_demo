@@ -16,6 +16,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsPlaying)
+        {
+            input = Vector2.zero;
+            return;
+        }
+
         Keyboard keyboard = Keyboard.current;
         if (keyboard == null) return;
 
