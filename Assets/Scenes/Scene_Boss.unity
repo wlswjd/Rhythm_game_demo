@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Conductor
   bpm: 120
-  firstBeatOffset: 0
+  firstBeatOffset: 0.3515
   musicSource: {fileID: 207355876}
 --- !u!1 &2089081845
 GameObject:

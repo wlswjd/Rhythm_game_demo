@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Conductor : MonoBehaviour
 {
@@ -17,7 +18,6 @@ public class Conductor : MonoBehaviour
     public bool IsPlaying { get; private set; }
 
     private double dspSongStartTime;
-
     private int lastReportedBeat = -1;
 
     private void Awake()
@@ -38,11 +38,16 @@ public class Conductor : MonoBehaviour
         SongPosition = (float)(AudioSettings.dspTime - dspSongStartTime) - firstBeatOffset;
         SongPositionInBeats = SongPosition / SecPerBeat;
 
+        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            Debug.Log($"[TAP] {SongPosition:F3}s / beat {SongPositionInBeats:F3}");
+        }
+
         int currentBeat = Mathf.FloorToInt(SongPositionInBeats);
         if (currentBeat != lastReportedBeat)
         {
             lastReportedBeat = currentBeat;
-            Debug.Log($"Beat {currentBeat} / {SongPosition:F3}s");
+            // Debug.Log($"Beat {currentBeat} / {SongPosition:F3}s");
         }
     }
 
