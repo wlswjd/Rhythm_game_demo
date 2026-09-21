@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BeatPattern
   lengthInBeats: 4
   noteBeats:
-  - 0
-  - 2
+  - 1
+  - 3

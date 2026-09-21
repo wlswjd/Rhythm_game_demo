@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Conductor : MonoBehaviour
 {
@@ -7,7 +6,7 @@ public class Conductor : MonoBehaviour
 
     [Header("곡 정보")]
     [SerializeField] private float bpm = 120f;
-    [SerializeField] private float firstBeatOffset = 0f;
+    [SerializeField] private float firstBeatOffset = 0.3515f;
 
     [Header("참조")]
     [SerializeField] private AudioSource musicSource;
@@ -17,8 +16,10 @@ public class Conductor : MonoBehaviour
     public float SongPositionInBeats { get; private set; }
     public bool IsPlaying { get; private set; }
 
+    public float CurrentBeat =>
+        (float)((AudioSettings.dspTime - dspSongStartTime - firstBeatOffset) / SecPerBeat);
+
     private double dspSongStartTime;
-    private int lastReportedBeat = -1;
 
     private void Awake()
     {
@@ -37,18 +38,11 @@ public class Conductor : MonoBehaviour
 
         SongPosition = (float)(AudioSettings.dspTime - dspSongStartTime) - firstBeatOffset;
         SongPositionInBeats = SongPosition / SecPerBeat;
+    }
 
-        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            Debug.Log($"[TAP] {SongPosition:F3}s / beat {SongPositionInBeats:F3}");
-        }
-
-        int currentBeat = Mathf.FloorToInt(SongPositionInBeats);
-        if (currentBeat != lastReportedBeat)
-        {
-            lastReportedBeat = currentBeat;
-            // Debug.Log($"Beat {currentBeat} / {SongPosition:F3}s");
-        }
+    public double BeatToDspTime(float beat)
+    {
+        return dspSongStartTime + firstBeatOffset + beat * SecPerBeat;
     }
 
     public void StartSong()
