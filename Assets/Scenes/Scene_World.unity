@@ -413,6 +413,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossTrigger
   warningDialogue: {fileID: 11400000, guid: a70fc22c5c4d140b882d6286d06eceaa, type: 2}
+  clearedDialogue: {fileID: 11400000, guid: 12a597098672b48619ac4cb673f8fd36, type: 2}
+  bossSceneName: Scene_Boss
 --- !u!61 &173482403
 BoxCollider2D:
   m_ObjectHideFlags: 0
