@@ -1,35 +1,25 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class BossTrigger : MonoBehaviour
+public class BossTrigger : Interactable
 {
     [SerializeField] private DialogueData warningDialogue;
     [SerializeField] private DialogueData clearedDialogue;
     [SerializeField] private string bossSceneName = "Scene_Boss";
 
-    private bool playerInRange;
     private bool warned;
 
-    private void Update()
+    public override bool CanInteract => !GameState.BossCleared;
+
+    public override void Interact()
     {
-        if (!playerInRange) return;
-        if (GameState.BossCleared) return;
-        if (DialogueManager.Instance != null && DialogueManager.Instance.IsPlaying) return;
-
-        Keyboard kb = Keyboard.current;
-        if (kb == null) return;
-
-        if (kb.eKey.wasPressedThisFrame)
-        {
-            SceneManager.LoadScene(bossSceneName);
-        }
+        SceneManager.LoadScene(bossSceneName);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
+        base.OnTriggerEnter2D(other);
         if (!other.CompareTag("Player")) return;
-        playerInRange = true;
 
         if (DialogueManager.Instance == null) return;
 
@@ -46,10 +36,10 @@ public class BossTrigger : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    protected override void OnTriggerExit2D(Collider2D other)
     {
+        base.OnTriggerExit2D(other);
         if (!other.CompareTag("Player")) return;
-        playerInRange = false;
         warned = false;
     }
 }

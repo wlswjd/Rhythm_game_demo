@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (DialogueManager.Instance != null && DialogueManager.Instance.IsPlaying)
+        if ((DialogueManager.Instance != null && DialogueManager.Instance.IsPlaying) || StatusMenu.IsOpen)
         {
             input = Vector2.zero;
             UpdateAnimator();
